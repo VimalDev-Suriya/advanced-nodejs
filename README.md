@@ -1,2 +1,1 @@
-# advanced-nodejs
-Advanced topics in node JS
+# Advanced topics in Node JS
