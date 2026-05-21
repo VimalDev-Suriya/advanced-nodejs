@@ -23,6 +23,17 @@ async function* weatherData() {
 // * Here the
 const weatherStream = Readable.from(weatherData(), { objectMode: true });
 
-weatherStream.on('data', (record) => {
-  console.log(`${record.city}: ${record.temp}°C`);
-});
+// weatherStream.on('data', (record) => {
+//   console.log(`${record.city}: ${record.temp}°C`);
+// });
+
+// *********** Default way to access teh Data ************
+// const getData = async () => {
+//   const data = weatherData();
+
+//   for await (let d of data) {
+//     console.log(d);
+//   }
+// };
+
+// getData();

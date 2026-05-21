@@ -1,6 +1,7 @@
 const { Duplex } = require('stream');
 
 const duplex = new Duplex({
+  allowHalfOpen: false,
   read(size) {
     this.push('data from read side');
     this.push(null); // EOF on read side
@@ -20,4 +21,28 @@ duplex.write('hello write side', () => {
   duplex.write('writting again');
 });
 
-// duplex.end();
+// * By default once all process ends, the duplex strema will be close
+// duplex.on('end', () => {
+//   duplex.end(); // Closing the duplex stream manually
+// });
+
+// ****************************** Example 2
+
+const duplex_2 = new Duplex({
+  read() {
+    this.push(String(this._count++ || (this._count = 1)));
+
+    if (this._count > 6) this.push(null);
+  },
+
+  write(chunk, encoding, cb) {
+    // console.log(chunk.toString());
+    process.stdout.write(chunk);
+  },
+});
+
+duplex_2.on('data', (chunk) => {
+  console.log('Chunk', chunk.toString());
+});
+
+duplex_2.write('Suriya');

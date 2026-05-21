@@ -11,13 +11,19 @@ fileReadStream.on('readable', () => {
   let chunk;
 
   while ((chunk = fileReadStream.read(16)) !== null) {
-    console.log(`Got ${chunk.length} bytes:`, chunk.toString());
+    // console.log(`Got ${chunk.length} bytes:`, chunk.toString());
   }
 });
 
 // * on Event emits when all the data was already flushed from source
+// * EOF -> End of File
 fileReadStream.on('end', () => {
   console.log('All Data was loaded');
+});
+
+// * Executes at last once all teh data was pulled
+fileReadStream.on('close', () => {
+  console.log('FD (File Directory) was released');
 });
 
 fileReadStream.on('error', () => {

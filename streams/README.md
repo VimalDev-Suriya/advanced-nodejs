@@ -1,6 +1,6 @@
 # Streams
 
-Ability to tackle the heavy data in chunk, rather than loading them entirely into the RAM and preocessing it. There are 4 types of Streams.
+Ability to tackle the heavy data in chunk, rather than loading them entirely into the RAM and preocessing it. There are 4 variation of Streams. All the streams are `async` operations by default.
 
 ## Why Streams.
 
