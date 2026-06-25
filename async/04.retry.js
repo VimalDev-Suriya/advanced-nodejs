@@ -24,6 +24,8 @@ async function withRetry(
       if (attempt === retries) break;
 
       const delay = Math.min(baseDelay * 2 ** attempt, maxDelay);
+
+      // To Prevent thunder herd problems
       const jitter = Math.random() * delay * 0.2; // ±20% jitter
       onRetry({ attempt, delay, err });
 
@@ -48,7 +50,7 @@ async function withRetry(
 const data = await withRetry(({ signal }) => fetch('/api/flaky', { signal }), {
   retries: 5,
   baseDelay: 200,
-  signal: AbortSignal.timeout(30_000),
+  signal: AbortSignal.timeout(30_000), // 30 sec - "_" using is the valid JS syntax
   onRetry: ({ attempt, delay }) =>
     logger.warn(`retry ${attempt} in ${delay}ms`),
 });

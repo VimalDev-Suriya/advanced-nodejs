@@ -38,6 +38,7 @@ const duplex_2 = new Duplex({
   write(chunk, encoding, cb) {
     // console.log(chunk.toString());
     process.stdout.write(chunk);
+    cb();
   },
 });
 

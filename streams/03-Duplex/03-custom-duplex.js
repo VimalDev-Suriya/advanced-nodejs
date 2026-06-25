@@ -13,7 +13,7 @@ class Channel extends Duplex {
     this.name = name;
   }
 
-  _read() {
+  _read(size) {
     if (this.#_inbox.length > 0) {
       const chunk = this.#_inbox.shift();
       this.push(chunk);
