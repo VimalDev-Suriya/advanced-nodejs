@@ -82,5 +82,3 @@ Application Programming Interface - ability to make the clinet and server tocomm
 3. Network Layer - IPv4 and IPv6
 4. Data Link Layer - Ethernet, WiFi, Bluetooth
 5. Physical layer
-
-###

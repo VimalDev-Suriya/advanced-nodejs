@@ -12,18 +12,25 @@ To fix this we use streams, so teh data converted into smaller chunks
 
 1. Readable Streams - Data flows out from source - `createReadStreams`, `process.stdin`, `http.incomingMessage`
 2. Writable Streams - Data flows into target - `createWriteStreams`, `process.stdout`, `http.responseMessage`
-3. Duplex - Independent read / write , TCP conecctions
+3. Duplex - Independent read / write , TCP conections (Websockets)
 4. Transform - Output derived from input
 
 - Backpressure - a technique slowing the source, when writable is slower than readable
 
 ### Readable Streams:
 
+Used to receive and read data from a source <br>
+
 The Architecture looks like [./01-ReadableStreams/readable_stream_internals.svg]. <br>
 
-'readable' gives you control — good when processing speed matters and you don't want to be flooded. 'data' is simpler but puts the stream in full-throttle flowing mode. Never mix both on the same stream.
+- _readable_ event gives you control — good when processing speed matters and you don't want to be flooded.
+- _data_ event is simpler but puts the stream in full-throttle flowing mode.
+
+Never mix both on the same stream.
 
 ### Writable Streams:
+
+Used to write and send data to a destination. <br>
 
 'drain' — the backpressure heartbeat. <br>
 

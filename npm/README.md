@@ -2,8 +2,14 @@
 
 ## Clean install:
 
-- `npm ci` is the **clean install** command, which helps to install the exact version of the dependencies present in the package-lock.json
+- `npm ci` is the **clean install** command, which helps to install the exact version of the dependencies that are `present in the package-lock.json file`.
+- It will compare the version present in package.json and package-lock.json file,
+  - if both are matched then it will install the deps.
+  - If there are mismatches, then it will throw the error.
+- `packahe-lock.json` is must to run this command, if there is no package-lock then, it will throw error.
+- If `node_modules` directory exist, then it will delete the folder and create a new one from scratch.
 - Ideally used in CICD pipelines and Production builds
+- It is `faster` than `npm i`, as it does not want to check lastest version
 
 ```
 npm ci
@@ -35,3 +41,10 @@ import { dirname } from 'path';
 
 const __filename = fileUrlToPath(import.meta.url);
 ```
+
+## The symbols ^ (caret) and ~ (tilde) are version modifiers used in your package.json:
+
+The Version of the NPM packages are like `MAJOR.MINOR.PATCH`, so these semantic versioning helps to upgrade the minor and patch version of the packages.
+
+- `^`, will update the `MINOR` and `PATCH` version of the packages if any.
+- `~`, will only update the `PATCH` version.

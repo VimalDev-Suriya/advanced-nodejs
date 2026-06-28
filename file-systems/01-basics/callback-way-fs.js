@@ -1,5 +1,5 @@
 // * Below we are using the standard NodeJS syntaxes to handle the file functionality
-// * Below code is the Async, but follows the callback stratefy to handle the file
+// * Below code is the Async, but follows the callback strategy to handle the file
 // * Below code as the major flaw, as each functionality should be dependent of each other, as the nested callback results in 'pyramid of dom'
 
 const fs = require('fs');

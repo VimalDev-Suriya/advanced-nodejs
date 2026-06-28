@@ -1,7 +1,6 @@
 {
   "name": "npm",
   "version": "1.0.0",
-  "description": "- `npm ci` is the **clean install** command, which helps to install the exact version of the dependencies present in the package-lock.json\r - Ideally used in CICD pipelines and Production builds",
   "main": "index.js",
   "type": "module",
   "scripts": {
